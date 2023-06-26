@@ -2,8 +2,8 @@
  * @copyright Romain Bertrand 2018
  */
 
-import './matchers';
+import './extend-expect';
 
-export { deriveToHaveReceivedMessage, deriveToReceiveMessage } from './matchers';
+export * from './deriving';
 export { default } from './websocket';
 export { default as WS } from './websocket';

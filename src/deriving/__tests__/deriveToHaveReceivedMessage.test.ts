@@ -5,8 +5,8 @@
 
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 
-import { deriveToHaveReceivedMessage, deriveToReceiveMessage } from '../deriving';
-import WS from '../websocket';
+import WS from '../../websocket';
+import deriveToHaveReceivedMessage from '../deriveToHaveReceivedMessage';
 
 let server: WS, client: WebSocket;
 beforeEach(async () => {
@@ -17,52 +17,6 @@ beforeEach(async () => {
 
 afterEach(() => {
   WS.clean();
-});
-
-describe('A custom matcher `toReceiveHello` derived from toReceiveMessage', () => {
-  expect.extend({
-    toReceiveHello: deriveToReceiveMessage('toReceiveHello', function (received) {
-      const pass = received === 'Hello';
-      const message = pass
-        ? () => `Expected the next received message is not Hello, but got ${received}`
-        : () => `Expected the next received message is Hello, but got ${received}`;
-
-      return {
-        actual: received,
-        expected: 'Hello',
-        message,
-        pass,
-      };
-    }),
-  });
-
-  it('passes when received "Hello"', async () => {
-    client.send('Hello');
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    await (expect(server) as any).toReceiveHello();
-  });
-
-  it('fails when received "Hi!"', async () => {
-    client.send('Hi!');
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    await expect((expect(server) as any).toReceiveHello()).rejects.toThrowErrorMatchingInlineSnapshot(
-      '"Expected the next received message is Hello, but got Hi!"'
-    );
-  });
-
-  it('fails when received "Hello" under .not context', async () => {
-    client.send('Hello');
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    await expect((expect(server) as any).not.toReceiveHello()).rejects.toThrowErrorMatchingInlineSnapshot(
-      '"Expected the next received message is not Hello, but got Hello"'
-    );
-  });
-
-  it('passes when received "Hi!" under .not context', async () => {
-    client.send('Hi!');
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    await (expect(server) as any).not.toReceiveHello();
-  });
 });
 
 describe('A custom matcher `toHaveHello` derived from toHaveReceivedMessages', () => {

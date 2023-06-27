@@ -3,7 +3,7 @@
  * @copyright Akiomi Kamakura 2023
  */
 
-import { ReceiveMessageOptions } from '../deriving';
+import { ReceiveMessageOptions } from '../derivers';
 import { DeserializedMessage } from '../websocket';
 import toHaveReceivedMessages from './toHaveReceivedMessages';
 import toReceiveMessage from './toReceiveMessage';

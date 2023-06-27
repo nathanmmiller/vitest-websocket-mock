@@ -6,7 +6,7 @@
 import type { ExpectationResult } from '@vitest/expect';
 import { diff } from 'jest-diff';
 
-import { deriveToReceiveMessage } from '../deriving';
+import { deriveToReceiveMessage } from '../derivers';
 
 const toReceiveMessage = deriveToReceiveMessage('toReceiveMessage', function (received, expected): ExpectationResult {
   const pass = this.equals(received, expected);

@@ -5,7 +5,7 @@
 
 import type { ExpectationResult } from '@vitest/expect';
 
-import { deriveToHaveReceivedMessage } from '../deriving';
+import { deriveToHaveReceivedMessage } from '../derivers';
 import type { DeserializedMessage } from '../websocket';
 
 const toHaveReceivedMessages = deriveToHaveReceivedMessage(

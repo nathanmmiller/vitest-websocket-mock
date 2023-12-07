@@ -53,7 +53,7 @@ describe('A custom matcher `toHaveHello` derived from toHaveReceivedMessages', (
     expect(() => {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       (expect(server) as any).toHaveHello();
-    }).toThrowErrorMatchingInlineSnapshot('"Expected the WS server to have received Hello, but got Hi!,Yo"');
+    }).toThrowErrorMatchingInlineSnapshot('[Error: Expected the WS server to have received Hello, but got Hi!,Yo]');
   });
 
   it('fails when received "Hello" under .not context', async () => {
@@ -64,7 +64,7 @@ describe('A custom matcher `toHaveHello` derived from toHaveReceivedMessages', (
     expect(() => {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       (expect(server) as any).not.toHaveHello();
-    }).toThrowErrorMatchingInlineSnapshot('"Expected the WS server to not have received Hello, but got Hi!,Hello"');
+    }).toThrowErrorMatchingInlineSnapshot('[Error: Expected the WS server to not have received Hello, but got Hi!,Hello]');
   });
 
   it('passes when not received "Hello" under .not context', async () => {

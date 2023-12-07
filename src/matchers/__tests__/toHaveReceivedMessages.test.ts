@@ -58,34 +58,34 @@ describe('.toHaveReceivedMessages', () => {
     expect(() => {
       expect(server).toHaveReceivedMessages(['hello there', "'sup?"]);
     }).toThrowErrorMatchingInlineSnapshot(`
-"[2mexpect([22m[31mWS[39m[2m).toHaveReceivedMessages([22m[32mexpected[39m[2m)[22m
+      [Error: [2mexpect([22m[31mWS[39m[2m).toHaveReceivedMessages([22m[32mexpected[39m[2m)[22m
 
-Expected the WS server to have received the following messages:
-  [32mArray [
-  \\"hello there\\",
-  \\"'sup?\\",
-][39m
-Received:
-  [31mArray [
-  \\"hello there\\",
-  \\"how are you?\\",
-  \\"good?\\",
-][39m
+      Expected the WS server to have received the following messages:
+        [32mArray [
+        "hello there",
+        "'sup?",
+      ][39m
+      Received:
+        [31mArray [
+        "hello there",
+        "how are you?",
+        "good?",
+      ][39m
 
-"
-`);
+      ]
+    `);
   });
 
   it('fails when called with an expected argument that is not a valid WS', async () => {
     expect(() => {
       expect('boom').toHaveReceivedMessages(['hello there']);
     }).toThrowErrorMatchingInlineSnapshot(`
-"[2mexpect([22m[31mWS[39m[2m).toHaveReceivedMessages([22m[32mexpected[39m[2m)[22m
+      [Error: [2mexpect([22m[31mWS[39m[2m).toHaveReceivedMessages([22m[32mexpected[39m[2m)[22m
 
-Expected the websocket object to be a valid WS mock.
-Received: string
-  [31m\\"boom\\"[39m"
-`);
+      Expected the websocket object to be a valid WS mock.
+      Received: string
+        [31m"boom"[39m]
+    `);
   });
 });
 
@@ -110,32 +110,32 @@ describe('.not.toHaveReceivedMessages', () => {
     expect(() => {
       expect(server).not.toHaveReceivedMessages(["'sup?", 'U good?', 'hello there']);
     }).toThrowErrorMatchingInlineSnapshot(`
-"[2mexpect([22m[31mWS[39m[2m).not.toHaveReceivedMessages([22m[32mexpected[39m[2m)[22m
+      [Error: [2mexpect([22m[31mWS[39m[2m).not.toHaveReceivedMessages([22m[32mexpected[39m[2m)[22m
 
-Expected the WS server to not have received the following messages:
-  [32mArray [
-  \\"'sup?\\",
-  \\"U good?\\",
-  \\"hello there\\",
-][39m
-But it received:
-  [31mArray [
-  \\"hello there\\",
-  \\"how are you?\\",
-  \\"good?\\",
-][39m"
-`);
+      Expected the WS server to not have received the following messages:
+        [32mArray [
+        "'sup?",
+        "U good?",
+        "hello there",
+      ][39m
+      But it received:
+        [31mArray [
+        "hello there",
+        "how are you?",
+        "good?",
+      ][39m]
+    `);
   });
 
   it('fails when called with an expected argument that is not a valid WS', async () => {
     expect(() => {
       expect('boom').not.toHaveReceivedMessages(['hello there']);
     }).toThrowErrorMatchingInlineSnapshot(`
-"[2mexpect([22m[31mWS[39m[2m).not.toHaveReceivedMessages([22m[32mexpected[39m[2m)[22m
+      [Error: [2mexpect([22m[31mWS[39m[2m).not.toHaveReceivedMessages([22m[32mexpected[39m[2m)[22m
 
-Expected the websocket object to be a valid WS mock.
-Received: string
-  [31m\\"boom\\"[39m"
-`);
+      Expected the websocket object to be a valid WS mock.
+      Received: string
+        [31m"boom"[39m]
+    `);
   });
 });

@@ -46,7 +46,7 @@ describe('A custom matcher `toReceiveHello` derived from toReceiveMessage', () =
     client.send('Hi!');
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     await expect((expect(server) as any).toReceiveHello()).rejects.toThrowErrorMatchingInlineSnapshot(
-      '"Expected the next received message is Hello, but got Hi!"'
+      '[Error: Expected the next received message is Hello, but got Hi!]'
     );
   });
 
@@ -54,7 +54,7 @@ describe('A custom matcher `toReceiveHello` derived from toReceiveMessage', () =
     client.send('Hello');
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     await expect((expect(server) as any).not.toReceiveHello()).rejects.toThrowErrorMatchingInlineSnapshot(
-      '"Expected the next received message is not Hello, but got Hello"'
+      '[Error: Expected the next received message is not Hello, but got Hello]'
     );
   });
 

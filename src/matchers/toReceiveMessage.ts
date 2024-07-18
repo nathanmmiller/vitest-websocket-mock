@@ -4,7 +4,7 @@
  */
 
 import type { ExpectationResult } from '@vitest/expect';
-import { diff } from 'jest-diff';
+import { diff } from '@vitest/utils/diff';
 
 import { deriveToReceiveMessage } from '../derivers';
 

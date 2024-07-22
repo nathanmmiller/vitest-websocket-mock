@@ -5,7 +5,7 @@
 
 import '../../extend-expect';
 
-import chalk from 'chalk';
+import c from 'tinyrainbow';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 
 import WS from '../../websocket';
@@ -87,11 +87,11 @@ describe('.toReceiveMessage', () => {
 
       Difference:
 
-      ${chalk.green('- Expected')}
-      ${chalk.red('+ Received')}
+      ${c.green('- Expected')}
+      ${c.red('+ Received')}
 
-      ${chalk.green('- HI!')}
-      ${chalk.red('+ hello there')}]
+      ${c.green('- HI!')}
+      ${c.red('+ hello there')}]
     `);
   });
 

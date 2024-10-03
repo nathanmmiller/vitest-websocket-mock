@@ -335,7 +335,6 @@ export { WebSocket as default } from 'mock-socket';
 
 - Somewhere in the test files, call `vi.mock` with the name of the library you want to mock. For instance, for the `ws` library:
 
-
 ```js
 // foo.test.js
 

@@ -319,7 +319,7 @@ under the hood to mock out WebSocket clients.
 Out of the box, Mock Socket will only mock out the global `WebSocket` object.
 If you are using a third-party WebSocket client library (eg. a Node.js
 implementation, like [`ws`](https://github.com/websockets/ws)), you'll need
-to set up a [manual mock](https://jestjs.io/docs/en/manual-mocks#mocking-node-modules):
+to set up a [manual mock](https://vitest.dev/api/vi.html#vi-mock):
 
 - Create a `__mocks__` folder in your project root
 - Add a new file in the `__mocks__` folder named after the library you want to
@@ -331,6 +331,19 @@ to set up a [manual mock](https://jestjs.io/docs/en/manual-mocks#mocking-node-mo
 // __mocks__/ws.js
 
 export { WebSocket as default } from 'mock-socket';
+```
+
+- Somewhere in the test files, call `vi.mock` with the name of the library you want to mock. For instance, for the `ws` library:
+
+```js
+// foo.test.js
+
+import WebSocket from 'ws';
+import { vi } from 'vitest';
+
+vi.mock('ws');
+
+// do some tests...
 ```
 
 **NOTE** The `ws` library is not 100% compatible with the browser API, and

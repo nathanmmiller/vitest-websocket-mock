@@ -112,7 +112,7 @@ describe('.toReceiveMessage', () => {
         Difference:
 
         [32m- Expected:[39m 
-        Object {
+        {
           "answer": 42,
         }
 
